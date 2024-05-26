@@ -36,17 +36,17 @@
 const gameContainer = document.getElementById("game-container");
 const images = () => [
     {imgSrc: 'img1.jpg', name: 'img1'},
-    //{imgSrc: 'img1.jpg', name: 'img1'},
+    {imgSrc: 'img1.jpg', name: 'img1'},
     {imgSrc: 'img2.jpg', name: 'img2'},
-    //{imgSrc: 'img2.jpg', name: 'img2'},
+    {imgSrc: 'img2.jpg', name: 'img2'},
     {imgSrc: 'img3.jpg', name: 'img3'},
-    //{imgSrc: 'img3.jpg', name: 'img3'},
+    {imgSrc: 'img3.jpg', name: 'img3'},
     {imgSrc: 'img4.jpg', name: 'img4'},
-    //{imgSrc: 'img4.jpg', name: 'img4'},
+    {imgSrc: 'img4.jpg', name: 'img4'},
     {imgSrc: 'img5.jpg', name: 'img5'},
-    //{imgSrc: 'img5.jpg', name: 'img5'},
+    {imgSrc: 'img5.jpg', name: 'img5'},
     {imgSrc: 'img6.jpg', name: 'img6'},
-    //{imgSrc: 'img6.jpg', name: 'img6'},
+    {imgSrc: 'img6.jpg', name: 'img6'},
 ];
 
 //const backOfCard = url('./images/back.jpg');
