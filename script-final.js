@@ -1,3 +1,4 @@
+
 /*                  MEMORY GAME
     1. Create a game that has 6 cards
     2. Each card should have a back and front
@@ -33,13 +34,19 @@
 */
 //                 Working Code
 const gameContainer = document.getElementById("game-container");
-const images = [
-    './images/img1.jpg', './images/img1.jpg',
-    './images/img2.jpg', './images/img2.jpg',
-    './images/img3.jpg', './images/img3.jpg',
-    './images/img4.jpg', './images/img4.jpg',
-    './images/img5.jpg', './images/img5.jpg',
-    './images/img6.jpg', './images/img6.jpg'
+const images = () => [
+    {imgSrc: 'img1.jpg', name: 'img1'},
+    //{imgSrc: 'img1.jpg', name: 'img1'},
+    {imgSrc: 'img2.jpg', name: 'img2'},
+    //{imgSrc: 'img2.jpg', name: 'img2'},
+    {imgSrc: 'img3.jpg', name: 'img3'},
+    //{imgSrc: 'img3.jpg', name: 'img3'},
+    {imgSrc: 'img4.jpg', name: 'img4'},
+    //{imgSrc: 'img4.jpg', name: 'img4'},
+    {imgSrc: 'img5.jpg', name: 'img5'},
+    //{imgSrc: 'img5.jpg', name: 'img5'},
+    {imgSrc: 'img6.jpg', name: 'img6'},
+    //{imgSrc: 'img6.jpg', name: 'img6'},
 ];
 
 //const backOfCard = url('./images/back.jpg');
@@ -82,31 +89,13 @@ function shuffle(array) {
         card.classList.add("card");
         // set the data-name attribute of the div to the array's value
         card.dataset.image = image;
-        // create a new img element
-        const front = document.createElement("img");
-        // give that image a src attribute of the array's value
-        front.src = image;
-        // give the image a class of front-face
-        front.classList.add("front-face");
-        // append the image to the div
-        card.appendChild(front);
-        // create a new div element
-        const back = document.createElement("div");
-        // give it a class of back-face
-        back.classList.add("back-face");
-        
-        // commented out the line below because it was not working
-        // set the background image of the div to the backOfCard
-        //back.style.backgroundImage = `url(${backOfCard})`;     
-        
-        // append the div to the DOM so it shows up on the page
-        card.appendChild(back);
-        // append the div to the DOM so it shows up on the page
+        // append the div to the element with an id of gameContainer
         gameContainer.appendChild(card);
-        card.addEventListener('click', function (flipCard){
+        card.addEventListener('click', function (){
             if (lockBoard) return;
             if (this === firstCard) return;
             this.classList.add('flip');
+            this.style.backgroundImage = `url(${this.dataset.image})`;
             if (!firstCard) {
                 firstCard = this;
                 return;
@@ -117,38 +106,18 @@ function shuffle(array) {
                 
     }
     }
-
-
-/*
-// 2nd attempt below
-// This code is not working.  So, I reverted back to the 1st attempt.
-function generateCards() {
-    shuffledImages = shuffle(images);
-    for (let image of images) {
-        const cardElement = document.createElement('div');
-        cardElement.classList.add('card');
-        cardElement.setAttribute('data-name', image.name);
-        cardElement.innerHTML = ` // This line was giving me an error. I do not know why.
-            <div class="front">
-                <img class="front-image" src=${image.name}>
-            </div>
-            <div class="back"></div>
-        `;
-        gameContainer.appendChild(cardElement);
-        cardElement.addEventListener('click', flipCard);    
-    }
-  }
-*/
-
     generateCards();
+
 
 function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
-    firstCard.style.backgroundImage = url()
     isMatch ? disableCards() : unflipCards();
 };
 
+
 function disableCards() {
+    firstCard.style.backgroundImage = `url(${firstCard.dataset.image})`;
+    secondCard.style.backgroundImage = `url(${secondCard.dataset.image})`;
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
     score++;
@@ -157,19 +126,6 @@ function disableCards() {
 };
 
 
-/*  1st attempt
-function flipCard() {
-    this.classList.add('flip');
-    if (!firstCard) {
-        firstCard = this;
-        return;
-    }
-    secondCard = this;
-    checkForMatch();
-};
-*/
-
-// 2nd attempt
 function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
@@ -185,19 +141,24 @@ function flipCard() {
     checkForMatch();
 }
 
+
 function unflipCards() {
     lockBoard = true;
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
+        firstCard.style.backgroundImage = "";
+        secondCard.style.backgroundImage = "";
         resetBoard();
     }, 1500);
 };
+
 
 function resetBoard() {
     [firstCard, secondCard] = [null, null];
     lockBoard = false;
 };
+
 
 function resetGame() {
     gameContainer.innerHTML = '';
@@ -207,20 +168,9 @@ function resetGame() {
     document.querySelector('.score').textContent = score;
 };
 
+
+
 const restartButton = document.querySelector('.restart');
 restartButton.addEventListener('click', function() {
     return resetGame();
     });
-/*  
-  gameContainer.innerHTML = '';
-    shuffledImages = shuffle(images);
-    generateCard();
-    score = 0;
-    document.querySelector('.score').textContent = score;
-}*/
-//document.querySelector('.reset').addEventListener('click', resetGame);
-
-
-
-    
-
