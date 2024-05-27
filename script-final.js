@@ -17,22 +17,37 @@
     15. The game should have a lose screen
   
     Psuedo Code
-    1. Choose 5-10 images to use for your game
-    2. Create an array that has each image listed twice so there are pairs
-    3. Create a function to shuffle your array
-    4. Create a function that will loop through your array of images and create divs for each image
-    5. Add an event listener to the div that will flip the card
-    6. Add a function to handle the flip
-    7. Add a function to check for a match
-    8. Add a function to handle a match
-    9. Add a function to reset the board after a non-match
-    10. Add a function to reset the board after a match
-    11. Add a function to reset the game
-    12. Add a function to initialize the game
-    13. Call the initialize function
-    14. Test your game!
+    1. Create a start button
+    2. Choose 5-10 images to use for your game
+    3. Create an array that has each image listed twice so there are pairs
+    4. Create a function to shuffle your array
+    5. Create a function that will loop through your array of images and create divs for each image
+    6. Add an event listener to the div that will flip the card
+    7. Add a function to handle the flip
+    8. Add a function to check for a match
+    9. Add a function to handle a match
+    10. Add a function to limit the number of turns to be 9 attempts.
+    11. Add a function to display a win screen
+    12. Add a function to display a lose screen
+    13. Add a function to reset the board after a non-match
+    14. Add a function to reset the board after a match
+    15. Add a function to reset the game
+    16. Add a function to initialize the game
+    17. Call the initialize function
+    18. Test your game!
 */
 //                 Working Code
+
+
+// 1. Create a start button
+
+const startButton = document.createElement("button");
+startButton.textContent = "Start";
+startButton.addEventListener("click", initializeGame);
+document.body.appendChild(startButton);
+
+// 2. Choose 5-10 images to use for your game
+
 const gameContainer = document.getElementById("game-container");
 const images = [
     {imgSrc: 'img1.jpg', name: 'img1'},
@@ -108,12 +123,12 @@ function shuffle(array) {
     }
     generateCards();
 
-
+/*
 function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
     isMatch ? disableCards() : unflipCards();
 };
-
+*/
 
 function disableCards() {
     firstCard.style.backgroundImage = `url(${firstCard.dataset.image})`;
@@ -153,6 +168,34 @@ function unflipCards() {
     }, 1500);
 };
 
+let attempts = 0;
+
+function checkForMatch() {
+    let isMatch = firstCard.dataset.image === secondCard.dataset.image;
+    isMatch ? disableCards() : unflipCards();
+    attempts++;
+    if (attempts >= 9) {
+        // Call a function to handle the end of the game
+        endGame();
+    }
+}
+
+function displayWinScreen() {
+    alert("Congratulations! You won the game!");
+    resetGame();
+}
+
+function checkForWin() {
+    const cards = document.querySelectorAll('.card');
+    if (cards.length === 0) {
+        displayWinScreen();
+    }
+}
+
+function endGame() {
+    alert("Game over! You have reached the maximum number of attempts.");
+    resetGame();
+}
 
 function resetBoard() {
     [firstCard, secondCard] = [null, null];
