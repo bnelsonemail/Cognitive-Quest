@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('game-container');
     const score = document.getElementById('score');
     const actions = document.getElementById('actions');
+    const heading = document.getElementById('heading');
+    const page = document.getElementById('page');
   
     startButton.addEventListener('click', () => {
       // Reveal the content
@@ -53,10 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
       content.style.gridTemplateColumns = 'repeat(6, 140px)';
       content.style.gridTemplateRows = 'repeat(2, calc(140px / 2 * 3))';
       content.style.perspective = '1000px';
+      
+      page.style.backgroundColor = '#3c14de';
 
       score.style.display = 'flex';
       score.style.justifyContent = 'center';
       score.style.alignItems = 'center';
+      score.style.fontFamily = 'cursive';
+      score.style.fontSize = '2rem';
 
       actions.style.display = 'flex';
       actions.style.justifyContent = 'center';
@@ -64,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       // Optionally, you can hide the start button after clicking
       startButton.style.display = 'none';
+      heading.style.display = 'none';
     });
   });
     // Add an initialize game function
