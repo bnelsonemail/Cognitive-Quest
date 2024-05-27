@@ -37,19 +37,40 @@
         #game-container {
             display: none; /* Hidden by default */
         }
+
+        #score {
+            display: none;
+        }
+
+        #actions {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
+    <div>
+        <h1>Press the Start Button to begin the Memory Game</h1>
+    </div>
     <div id="start-game" class="start-game">
         <button id="start-button">Start Game</button>
     </div>   
-    <div class="header"></div>     
-    <div id="game-container" class="game-container"></div>
-    <br>
-    <p>Score: <span class="score"></span></p>
-    <div class="actions">
-        <button class="restart">Restart</button>
-    </div>
+    
+    <section id="game-container">  
+        <div class="game-container"></div>
+        <br>
+        
+    </section>
+    <section id="score">
+        <div class='score'>
+            <p>Score: <span class="score"></span></p>
+        </div>
+    </section>
+    <section id="actions">
+        <div class="actions">
+            <button class="restart">Restart</button>
+        </div>
+    </section>
     <script src="script-final.js"></script>
 </body>
 </html>

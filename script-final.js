@@ -41,10 +41,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-button');
     const content = document.getElementById('game-container');
+    const score = document.getElementById('score');
+    const actions = document.getElementById('actions');
   
     startButton.addEventListener('click', () => {
       // Reveal the content
-      content.style.display = 'block';
+      content.style.display = 'grid';
+      content.style.justifyContent = 'center';
+      content.style.alignItems = 'center';
+      content.style.gap = '25px';
+      content.style.gridTemplateColumns = 'repeat(6, 140px)';
+      content.style.gridTemplateRows = 'repeat(2, calc(140px / 2 * 3))';
+      content.style.perspective = '1000px';
+
+      score.style.display = 'flex';
+      score.style.justifyContent = 'center';
+      score.style.alignItems = 'center';
+
+      actions.style.display = 'flex';
+      actions.style.justifyContent = 'center';
+      actions.style.alignItems = 'center';
   
       // Optionally, you can hide the start button after clicking
       startButton.style.display = 'none';
@@ -54,16 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function startGame() {
     return resetGame();
 }
-
-
-
-
-
-
-
-
-
-
 
 // 2. Choose 5-10 images to use for your game
 
@@ -82,24 +88,6 @@ const images = [
     {imgSrc: 'images/img6.jpg', name: 'img6'},
     {imgSrc: 'images/img6.jpg', name: 'img6'},
 ];
-/*
-images.forEach((image) => {
-    const img = document.createElement('img');
-    img.src = image.imgSrc;
-    img.alt = image.name;
-    gameContainer.appendChild(img);
-});
-
-const img = document.querySelectorAll('img');
-img.forEach((image) => {
-    image.style.width = '100px';
-    image.style.height = '100px';
-    image.style.margin = '10px';
-    image.style.display = 'inline-block';
-});
-*/
-//const backOfCard = url('./images/back.jpg');
-
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
