@@ -64,6 +64,7 @@ const images = [
     {imgSrc: 'img6.jpg', name: 'img6'},
 ];
 
+
 //const backOfCard = url('./images/back.jpg');
 
 let firstCard = null;
@@ -123,12 +124,12 @@ function shuffle(array) {
     }
     generateCards();
 
-/*
+
 function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
     isMatch ? disableCards() : unflipCards();
 };
-*/
+
 
 function disableCards() {
     firstCard.style.backgroundImage = `url(${firstCard.dataset.image})`;
@@ -168,34 +169,35 @@ function unflipCards() {
     }, 1500);
 };
 
+
 let attempts = 0;
 
 function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
     isMatch ? disableCards() : unflipCards();
-    attempts++;
-    if (attempts >= 9) {
-        // Call a function to handle the end of the game
-        endGame();
+    if (isMatch === false) {
+        attempts++;
+    }
+    if (attempts === 9) {
+        // Call a function to handle the game over condition
+        handleGameOver();
     }
 }
 
-function displayWinScreen() {
-    alert("Congratulations! You won the game!");
-    resetGame();
-}
-
-function checkForWin() {
-    const cards = document.querySelectorAll('.card');
-    if (cards.length === 0) {
-        displayWinScreen();
+function handleGameOver() {
+    // Check if all cards are matched
+    const allCards = document.querySelectorAll('.card');
+    const matchedCards = document.querySelectorAll('.flip');
+    if (allCards.length === matchedCards.length) {
+        // Game is won
+        alert("Congratulations! You won the game!");
+    } else {
+        // Game is lost
+        alert("Game over! You lost the game!");
     }
 }
 
-function endGame() {
-    alert("Game over! You have reached the maximum number of attempts.");
-    resetGame();
-}
+
 
 function resetBoard() {
     [firstCard, secondCard] = [null, null];
