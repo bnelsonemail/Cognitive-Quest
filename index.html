@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
     <link rel="stylesheet" href="style-working.css">
+    <style>
+        #start-button button {
+            padding: 8px 16px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background-color: #0ab223;
+            border: 1px solid black;
+            border-radius: 10px;
+            color: white;
+        }
+
+        #start-button button:hover {
+            background-color: #1009ee;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        #start-button button:active {
+            background-color: #0ab223;
+            transition: .1s;
+        }
+        
+        #start-game {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        
+        #content {
+            display: none; /* Hidden by default */
+        }
+    </style>
 </head>
 <body>
     <div id="start-game" class="start-game">
