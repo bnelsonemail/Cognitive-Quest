@@ -38,13 +38,32 @@
 */
 //                 Working Code
 
+document.addEventListener('DOMContentLoaded', () => {
+    const startButton = document.getElementById('start-button');
+    const startScreen = document.getElementById('start-game');
+    const gameContainer = document.getElementById('game-container');
 
-// 1. Create a start button
+    startButton.addEventListener('click', () => {
+        startScreen.style.display = 'none';
+        gameContainer.style.display = 'block';
+        startGame();
+    });
 
-const startButton = document.createElement("button");
-startButton.textContent = "Start";
-startButton.addEventListener("click", initializeGame);
-document.body.appendChild(startButton);
+    // Add an initialize game function
+function startGame() {
+    return resetGame();
+}
+});
+
+
+
+
+
+
+
+
+
+
 
 // 2. Choose 5-10 images to use for your game
 
