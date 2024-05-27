@@ -39,8 +39,8 @@
 //                 Working Code
 
 document.addEventListener('DOMContentLoaded', () => {
-    const startButton = document.getElementsById('start-button');
-    const content = document.getElementById('content');
+    const startButton = document.getElementById('start-button');
+    const content = document.getElementById('game-container');
   
     startButton.addEventListener('click', () => {
       // Reveal the content
@@ -69,21 +69,35 @@ function startGame() {
 
 const gameContainer = document.getElementById("game-container");
 const images = [
-    {imgSrc: 'img1.jpg', name: 'img1'},
-    {imgSrc: 'img1.jpg', name: 'img1'},
-    {imgSrc: 'img2.jpg', name: 'img2'},
-    {imgSrc: 'img2.jpg', name: 'img2'},
-    {imgSrc: 'img3.jpg', name: 'img3'},
-    {imgSrc: 'img3.jpg', name: 'img3'},
-    {imgSrc: 'img4.jpg', name: 'img4'},
-    {imgSrc: 'img4.jpg', name: 'img4'},
-    {imgSrc: 'img5.jpg', name: 'img5'},
-    {imgSrc: 'img5.jpg', name: 'img5'},
-    {imgSrc: 'img6.jpg', name: 'img6'},
-    {imgSrc: 'img6.jpg', name: 'img6'},
+    {imgSrc: 'images/img1.jpg', name: 'img1'},
+    {imgSrc: 'images/img1.jpg', name: 'img1'},
+    {imgSrc: 'images/img2.jpg', name: 'img2'},
+    {imgSrc: 'images/img2.jpg', name: 'img2'},
+    {imgSrc: 'images/img3.jpg', name: 'img3'},
+    {imgSrc: 'images/img3.jpg', name: 'img3'},
+    {imgSrc: 'images/img4.jpg', name: 'img4'},
+    {imgSrc: 'images/img4.jpg', name: 'img4'},
+    {imgSrc: 'images/img5.jpg', name: 'img5'},
+    {imgSrc: 'images/img5.jpg', name: 'img5'},
+    {imgSrc: 'images/img6.jpg', name: 'img6'},
+    {imgSrc: 'images/img6.jpg', name: 'img6'},
 ];
+/*
+images.forEach((image) => {
+    const img = document.createElement('img');
+    img.src = image.imgSrc;
+    img.alt = image.name;
+    gameContainer.appendChild(img);
+});
 
-
+const img = document.querySelectorAll('img');
+img.forEach((image) => {
+    image.style.width = '100px';
+    image.style.height = '100px';
+    image.style.margin = '10px';
+    image.style.display = 'inline-block';
+});
+*/
 //const backOfCard = url('./images/back.jpg');
 
 let firstCard = null;
@@ -122,8 +136,9 @@ function shuffle(array) {
         const card = document.createElement("div");
         // give it a class of card  (this will style your div)  (this is the front of the card)     
         card.classList.add("card");
+        console.log(image)
         // set the data-name attribute of the div to the array's value
-        card.dataset.image = image;
+        card.dataset.image = image.imgSrc;
         // append the div to the element with an id of gameContainer
         gameContainer.appendChild(card);
         card.addEventListener('click', function (){
