@@ -39,21 +39,21 @@
 //                 Working Code
 
 document.addEventListener('DOMContentLoaded', () => {
-    const startButton = document.getElementById('start-button');
-    const startScreen = document.getElementById('start-game');
-    const gameContainer = document.getElementById('game-container');
-
+    const startButton = document.getElementsById('start-button');
+    const content = document.getElementById('content');
+  
     startButton.addEventListener('click', () => {
-        startScreen.style.display = 'none';
-        gameContainer.style.display = 'block';
-        startGame();
+      // Reveal the content
+      content.style.display = 'block';
+  
+      // Optionally, you can hide the start button after clicking
+      startButton.style.display = 'none';
     });
-
+  });
     // Add an initialize game function
 function startGame() {
     return resetGame();
 }
-});
 
 
 
