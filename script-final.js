@@ -99,8 +99,10 @@ let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
 let score = 0;
+let attempts = 0;
+const maxAttempts = 9;
 
-document.querySelector('.score').textContent = score;
+//document.querySelector('.score').textContent = score;
 
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
@@ -131,7 +133,6 @@ function shuffle(array) {
         const card = document.createElement("div");
         // give it a class of card  (this will style your div)  (this is the front of the card)     
         card.classList.add("card");
-        console.log(image)
         // set the data-name attribute of the div to the array's value
         card.dataset.image = image.imgSrc;
         // append the div to the element with an id of gameContainer
@@ -199,18 +200,51 @@ function unflipCards() {
 };
 
 
-let attempts = 0;
 
-function checkForMatch() {
-    let isMatch = firstCard.dataset.image === secondCard.dataset.image;
-    isMatch ? disableCards() : unflipCards();
+
+
+
+
+
+
+function trackAttempts (){
+    // create a new div
+    const track = document.createElement("div");
+    // give it a class of track  (this will style your div)     
+    track.classList.add("track");
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function checkAttempts () {
+    checkForMatch;
     if (isMatch === false) {
         attempts++;
     }
     if (attempts === 9) {
         // Call a function to handle the game over condition
         handleGameOver();
-    }
+    };
+}
+
+
+
+
+
+function checkForMatch() {
+    let isMatch = firstCard.dataset.image === secondCard.dataset.image;
+    isMatch ? disableCards() : unflipCards();
+    
 }
 
 function handleGameOver() {
