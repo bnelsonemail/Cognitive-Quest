@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const actions = document.getElementById('actions');
     const heading = document.getElementById('heading');
     const page = document.getElementById('page');
+    const move = document.getElementById('move-counter');
   
     startButton.addEventListener('click', () => {
       // Reveal the content
@@ -62,7 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
       score.style.justifyContent = 'center';
       score.style.alignItems = 'center';
       score.style.fontFamily = 'cursive';
-      score.style.fontSize = '2rem';
+      score.style.fontSize = '5rem';
+
+      move.style.display = 'flex';
+      move.style.justifyContent = 'center';
+      move.style.alignItems = 'center';
+      move.style.fontFamily = 'cursive';
+      move.style.fontSize = '5rem';
 
       actions.style.display = 'flex';
       actions.style.justifyContent = 'center';
@@ -99,8 +106,8 @@ let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
 let score = 0;
-let attempts = 0;
-const maxAttempts = 9;
+let moveCounter = 0;
+
 
 //document.querySelector('.score').textContent = score;
 
@@ -138,6 +145,8 @@ function shuffle(array) {
         // append the div to the element with an id of gameContainer
         gameContainer.appendChild(card);
         card.addEventListener('click', function (){
+
+            
             if (lockBoard) return;
             if (this === firstCard) return;
             this.classList.add('flip');
@@ -182,7 +191,9 @@ function flipCard() {
     }
     secondCard = this;
     score++;
+    
     document.querySelector('.score').textContent = score;
+    
     lockBoard = true;
     checkForMatch();
 }
@@ -206,47 +217,43 @@ function unflipCards() {
 
 
 
-
-function trackAttempts (){
-    // create a new div
-    const track = document.createElement("div");
-    // give it a class of track  (this will style your div)     
-    track.classList.add("track");
-    
-
-}
-
-
-
-
-
-
-
-
-
-
-
-function checkAttempts () {
-    checkForMatch;
-    if (isMatch === false) {
-        attempts++;
+function updateMoveCounter (){
+       //counter logic
+       moveCounter ++
+       document.querySelector('.move').textContent = move;
+       updateMoveCounter();
+       if (moveCounter === 9){
+           return handleGameOver();
+       };
+       //counter logic
+    //counter
+    document.querySelector('.move').textContent = move; 
+    //counter 
     }
-    if (attempts === 9) {
-        // Call a function to handle the game over condition
-        handleGameOver();
-    };
-}
+
+         
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+/*
 function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
     isMatch ? disableCards() : unflipCards();
     
 }
-
+*/
 function handleGameOver() {
     // Check if all cards are matched
     const allCards = document.querySelectorAll('.card');
@@ -254,10 +261,14 @@ function handleGameOver() {
     if (allCards.length === matchedCards.length) {
         // Game is won
         alert("Congratulations! You won the game!");
+        MoveCounter = 0;
+        updateMoveCounter();
     } else {
         // Game is lost
         alert("Game over! You lost the game!");
-    }
+        MoveCounter = 0;
+        updateMoveCounter();
+    };
 }
 
 
@@ -282,3 +293,5 @@ const restartButton = document.querySelector('.restart');
 restartButton.addEventListener('click', function() {
     return resetGame();
     });
+
+

@@ -32,6 +32,16 @@ html {
    font-size: 5rem;
    margin-top: 2rem;
  }
+
+ #move-counter p {
+  display: block;
+  text-align: center;
+  color: #0a0a0a;
+  font-weight: 900;
+  font-family: cursive;
+  font-size: 5rem;
+  margin-top: 2rem;
+ }
  
  .score {
     display: flex;
