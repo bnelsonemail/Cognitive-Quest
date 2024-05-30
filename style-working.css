@@ -30,7 +30,8 @@ html {
    font-weight: 900;
    font-family: cursive;
    font-size: 5rem;
-   margin-top: 2rem;
+   margin-top: 0.5rem;
+   margin-bottom: 0;
  }
 
  #move-counter p {
@@ -40,15 +41,16 @@ html {
   font-weight: 900;
   font-family: cursive;
   font-size: 5rem;
-  margin-top: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 0;
  }
  
  .score {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
-    padding-top: 4rem;
+    margin-top: 1rem;
+   
  }
  
  .start-game button{

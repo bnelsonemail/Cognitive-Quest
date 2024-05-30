@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       move.style.display = 'flex';
       move.style.justifyContent = 'center';
-      move.style.alignItems = 'center';
+      move.style.alignItems = 'start';
       move.style.fontFamily = 'cursive';
       move.style.fontSize = '5rem';
 
@@ -167,6 +167,7 @@ function shuffle(array) {
 function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
     isMatch ? disableCards() : unflipCards();
+    updateMoveCounter();
 };
 
 
@@ -176,7 +177,7 @@ function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
     score++;
-    document.querySelector('.score').textContent = score;
+    document.querySelector('.score-text').textContent = score;
     resetBoard();
 };
 
@@ -192,7 +193,7 @@ function flipCard() {
     secondCard = this;
     score++;
     
-    document.querySelector('.score').textContent = score;
+    document.querySelector('.score-text').textContent = score;
     
     lockBoard = true;
     checkForMatch();
@@ -202,8 +203,10 @@ function flipCard() {
 function unflipCards() {
     lockBoard = true;
     setTimeout(() => {
-        firstCard.classList.remove('flip');
-        secondCard.classList.remove('flip');
+        if(firstCard.classList.contains("flip")){
+            firstCard.classList.remove('flip');};
+        if(secondCard.classList.contains("flip")){
+            secondCard.classList.remove('flip');}
         firstCard.style.backgroundImage = "";
         secondCard.style.backgroundImage = "";
         resetBoard();
@@ -219,15 +222,15 @@ function unflipCards() {
 
 function updateMoveCounter (){
        //counter logic
-       moveCounter ++
-       document.querySelector('.move').textContent = move;
-       updateMoveCounter();
+       moveCounter++
+
+
        if (moveCounter === 9){
-           return handleGameOver();
+           handleGameOver();
        };
        //counter logic
     //counter
-    document.querySelector('.move').textContent = move; 
+    document.querySelector('.move-counter').textContent = moveCounter;
     //counter 
     }
 
@@ -261,13 +264,13 @@ function handleGameOver() {
     if (allCards.length === matchedCards.length) {
         // Game is won
         alert("Congratulations! You won the game!");
-        MoveCounter = 0;
-        updateMoveCounter();
+        resetBoard();
+        resetGame();
     } else {
         // Game is lost
         alert("Game over! You lost the game!");
-        MoveCounter = 0;
-        updateMoveCounter();
+        resetBoard();
+        resetGame();
     };
 }
 
@@ -284,7 +287,8 @@ function resetGame() {
     shuffledImages = shuffle(images);
     generateCards();
     score = 0;
-    document.querySelector('.score').textContent = score;
+    moveCounter = 0;
+    document.querySelector('.score-text').textContent = score;
 };
 
 
