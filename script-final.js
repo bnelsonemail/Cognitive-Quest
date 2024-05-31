@@ -215,63 +215,42 @@ function unflipCards() {
 
 
 
-
-
-
-
-
 function updateMoveCounter (){
-       //counter logic
-       moveCounter++
-
+       if (firstCard != secondCard){
+            moveCounter++
+       };
 
        if (moveCounter === 9){
            handleGameOver();
        };
-       //counter logic
-    //counter
+
     document.querySelector('.move-counter').textContent = moveCounter;
-    //counter 
+    const allCards = document.querySelectorAll('.card');
+    const matchedCards = document.querySelectorAll('.flip');
+    
+    if (allCards.length === matchedCards.length) {
+        // Game is won
+        alert("Congratulations! You won the game!");
+        moveCounter = 0;
+        resetBoard();
+        resetGame();
+        
+    };
     }
 
-         
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function checkForMatch() {
-    let isMatch = firstCard.dataset.image === secondCard.dataset.image;
-    isMatch ? disableCards() : unflipCards();
-    
-}
-*/
 function handleGameOver() {
     // Check if all cards are matched
     const allCards = document.querySelectorAll('.card');
     const matchedCards = document.querySelectorAll('.flip');
-    if (allCards.length === matchedCards.length) {
-        // Game is won
-        alert("Congratulations! You won the game!");
-        resetBoard();
-        resetGame();
-    } else {
+    if (allCards.length !== matchedCards.length) {
         // Game is lost
         alert("Game over! You lost the game!");
         resetBoard();
         resetGame();
-    };
+    }
+    
 }
 
 
@@ -295,7 +274,7 @@ function resetGame() {
 
 const restartButton = document.querySelector('.restart');
 restartButton.addEventListener('click', function() {
-    return resetGame();
+    resetGame();
     });
 
 
