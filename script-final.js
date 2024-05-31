@@ -230,8 +230,10 @@ function updateMoveCounter (){
     
     if (allCards.length === matchedCards.length) {
         // Game is won
+        
         alert("Congratulations! You won the game!");
         moveCounter = 0;
+        document.querySelector('.move-counter').textContent = moveCounter;
         resetBoard();
         resetGame();
         
@@ -258,6 +260,7 @@ function handleGameOver() {
 function resetBoard() {
     [firstCard, secondCard] = [null, null];
     lockBoard = false;
+    
 };
 
 
