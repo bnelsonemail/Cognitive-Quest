@@ -119,18 +119,20 @@ html {
   
   .game-container {
     perspective: 390px;
-    display: grid;
+    /*display: grid;*/
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    grid-template-columns: repeat(6, 140px);
-    grid-template-rows: repeat(2, calc(140px / 2 * 3 ));
+    gap: 5px;
+    grid-template-columns: 2fr;
+    grid-template-rows: 6fr;
   }
   
-  .card {
-  height: calc(140px / 2 * 3);
-  width: 140px;
-  border-radius: 10px;
+.card {
+  height: 55px;
+  min-height: 55px;
+  width: 70px;
+  min-width: 70px;
+  border-radius: 5px;
   /*background-color: #f1f1f1;*/
   background-image: url('images/back.jpg');
   position: relative;
@@ -140,6 +142,7 @@ html {
   background-repeat: no-repeat;
   }
 }
+
  .front-face {
    background-color: #f1f1f1;
    border: 1px solid black;
