@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
       content.style.flexWrap = 'wrap';
       /*content.style.justifyContent = 'center';
       content.style.alignItems = 'center';*/
-      content.style.gap = '1rem';
-      content.style.flex = '1 0 25%';
+      content.style.gap = '1rem';  // For some reason this was not being recognized in CSS.  So I placeed it in JS to get the desired results.
+      //content.style.flex = '1 0 25%';
 
       /*content.style.gridTemplateColumns = 'repeat(6, 140px)';
       content.style.gridTemplateRows = 'repeat(2, calc(140px / 2 * 3))';
