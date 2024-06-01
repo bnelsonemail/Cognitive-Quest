@@ -49,31 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
   
     startButton.addEventListener('click', () => {
       // Reveal the content
-      content.style.display = 'grid';
+      content.style.display = 'flex';
+      content.style.flexWrap = 'wrap';
       /*content.style.justifyContent = 'center';
-      content.style.alignItems = 'center';
-      content.style.gap = '25px';
-      content.style.gridTemplateColumns = 'repeat(6, 140px)';
+      content.style.alignItems = 'center';*/
+      content.style.gap = '1rem';
+      content.style.flex = '1 0 25%';
+
+      /*content.style.gridTemplateColumns = 'repeat(6, 140px)';
       content.style.gridTemplateRows = 'repeat(2, calc(140px / 2 * 3))';
       content.style.perspective = '1000px';*/
       
       page.style.backgroundColor = '#3c14de';
 
       score.style.display = 'flex';
-      /*score.style.justifyContent = 'center';
+      score.style.justifyContent = 'center';
       score.style.alignItems = 'center';
       score.style.fontFamily = 'cursive';
-      score.style.fontSize = '5rem';*/
+      score.style.fontSize = '5rem';
 
       move.style.display = 'flex';
-      /*move.style.justifyContent = 'center';
+      move.style.justifyContent = 'center';
       move.style.alignItems = 'start';
       move.style.fontFamily = 'cursive';
-      move.style.fontSize = '5rem';*/
+      move.style.fontSize = '5rem';
 
       actions.style.display = 'flex';
-      /*actions.style.justifyContent = 'center';
-      actions.style.alignItems = 'center';*/
+      actions.style.justifyContent = 'center';
+      actions.style.alignItems = 'center';
   
       // Optionally, you can hide the start button after clicking
       startButton.style.display = 'none';
@@ -248,7 +251,7 @@ function handleGameOver() {
     const matchedCards = document.querySelectorAll('.flip');
     if (allCards.length !== matchedCards.length) {
         // Game is lost
-        alert("Game over! You lost the game!");
+        alert("Game over! You lost the game! Better luck next time!");
         resetBoard();
         resetGame();
     }

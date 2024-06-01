@@ -94,17 +94,24 @@ html {
  
  .game-container {
    perspective: 1000px;
-   display: grid;
-   justify-content: center;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   flex-wrap: wrap;
+   flex: 1 0 25%;
+   justify-content: space-between;
    align-items: center;
-   gap: 25px;
-   grid-template-columns: repeat(6, 140px);
-   grid-template-rows: repeat(2, calc(140px / 2 * 3 ));
+   gap: 1rem;
+   /*grid-template-columns: repeat(6, 140px);
+   grid-template-rows: repeat(2, calc(140px / 2 * 3 ));*/
  }
  
  .card {
-   height: calc(140px / 2 * 3);
+   height: 210px;
    width: 140px;
+   display: flex;
+   justify-content: space-around;
    border-radius: 10px;
    /*background-color: #f1f1f1;*/
    background-image: url('images/back.jpg');
@@ -115,16 +122,31 @@ html {
    background-repeat: no-repeat;
  }
 
+ @media (max-width: 1500px) {
+
+  .game-container {
+    perspective: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 25%;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+ }
+ }
+
  @media (max-width:390px) {
   
   .game-container {
-    perspective: 390px;
-    /*display: grid;*/
+    perspective: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 33%;
     justify-content: center;
     align-items: center;
     gap: 5px;
-    grid-template-columns: 2fr;
-    grid-template-rows: 6fr;
+    /*grid-template-columns: 2fr;
+    grid-template-rows: 6fr;*/
   }
   
 .card {
