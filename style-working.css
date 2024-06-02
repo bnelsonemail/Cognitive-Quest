@@ -173,10 +173,10 @@ html {
 
 .card {
   height: 150px;
-  min-height: 150px;
   width: 100px;
-  min-width: 100px;
-  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
   /*background-color: #f1f1f1;*/
   background-image: url('images/back.jpg');
   position: relative;
@@ -184,12 +184,11 @@ html {
   transition: all 0.5s ease-in-out;
   background-size: cover;
   background-repeat: no-repeat;
-  }
 
  }
 
 
- @media (max-width:390px) {
+ @media (max-width:450px) {
   
   .game-container {
     perspective: 1000px;
