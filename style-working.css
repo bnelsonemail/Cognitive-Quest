@@ -111,6 +111,7 @@ html {
    height: 210px;
    width: 140px;
    display: flex;
+   flex: 1 1 calc(25% - 16px); /* Three items per row */;
    justify-content: space-around;
    border-radius: 10px;
    /*background-color: #f1f1f1;*/
@@ -120,9 +121,10 @@ html {
    transition: all 0.5s ease-in-out;
    background-size: cover;
    background-repeat: no-repeat;
+   aspect-ratio: 2 / 3; /* Maintain card ratio */
  }
 
- @media (max-width: 750px) {
+ @media (max-width: 1250px) {
 
   .game-container {
     perspective: 1000px;
@@ -134,18 +136,77 @@ html {
     gap: 2rem;
  }
 
- body {
-  font-family: Arial, sans-serif;
-  font-size: .8rem;
-  background-color: #a35db9;
+  body {
+    font-family: Arial, sans-serif;
+    font-size: .8rem;
+    background-color: #a35db9;
 
-  margin-left: 8rem;
-  margin-right: 8rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 1rem;
+    margin-left: 8rem;
+    margin-right: 8rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    }
+
+  .card {
+    height: 210px;
+    width: 140px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    /*background-color: #f1f1f1;*/
+    background-image: url('images/back.jpg');
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex: 1 1 calc(25% - 1rem); /* Four cards per row*/ 
+    aspect-ratio: 2 / 3; /* Maintain card ratio */
+  }
 }
+
+@media (max-width: 750px) {
+
+  .game-container {
+    perspective: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 calc(33.333% - 16px); /* Three items per row */;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
  }
+
+  body {
+    font-family: Arial, sans-serif;
+    font-size: .8rem;
+    background-color: #a35db9;
+
+    margin-left: 8rem;
+    margin-right: 8rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    }
+
+  .card {
+    height: 150px;
+    width: 100px;
+    display: flex;
+    flex: 1 1 calc(33.333% - 1rem); /* Three cards per row */
+    justify-content: space-around;
+    border-radius: 10px;
+    /*background-color: #f1f1f1;*/
+    background-image: url('images/back.jpg');
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+  }
+}
 
  @media (max-width: 580px) {
 
@@ -159,33 +220,33 @@ html {
     gap: 2rem;
  }
 
- body {
-  font-family: Arial, sans-serif;
-  font-size: .5rem;
-  background-color: #a35db9;
+  body {
+    font-family: Arial, sans-serif;
+    font-size: .5rem;
+    background-color: #a35db9;
 
-  margin-left: 4rem;
-  margin-right: 4rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding: 0;
-}
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
 
-.card {
-  height: 150px;
-  width: 100px;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 10px;
-  /*background-color: #f1f1f1;*/
-  background-image: url('images/back.jpg');
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in-out;
-  background-size: cover;
-  background-repeat: no-repeat;
+  .card {
+    height: 150px;
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    /*background-color: #f1f1f1;*/
+    background-image: url('images/back.jpg');
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    background-size: cover;
+    background-repeat: no-repeat;
 
- }
+  }
 }
 
  @media (max-width:450px) {
@@ -194,7 +255,7 @@ html {
     perspective: 1000px;
     display: flex;
     flex-wrap: wrap;
-    flex: 1 0 33%;
+    /*flex: 1 0 33%;*/
     justify-content: center;
     align-items: center;
     gap: 5px;
@@ -202,19 +263,32 @@ html {
     grid-template-rows: 6fr;*/
   }
   
-.card {
-  height: 55px;
-  min-height: 55px;
-  width: 70px;
-  min-width: 70px;
-  border-radius: 5px;
-  /*background-color: #f1f1f1;*/
-  background-image: url('images/back.jpg');
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in-out;
-  background-size: cover;
-  background-repeat: no-repeat;
+  .card {
+    flex: 0 1 calc(50% - 1rem); /* Two cards per row */
+    height: 100px;
+    min-height: 100px;
+    width: 67px;
+    min-width: 67px;
+    border-radius: 5px;
+    /*background-color: #f1f1f1;*/
+    background-image: url('images/back.jpg');
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+  body {
+    font-family: Arial, sans-serif;
+    font-size: .5rem;
+    background-color: #a35db9;
+  
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 0;
+    padding: 2rem;
   }
 }
 
