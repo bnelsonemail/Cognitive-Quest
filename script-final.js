@@ -177,6 +177,9 @@ function checkForMatch() {
 function disableCards() {
     firstCard.style.backgroundImage = `url(${firstCard.dataset.image})`;
     secondCard.style.backgroundImage = `url(${secondCard.dataset.image})`;
+    //Add matched class to both cards, the pointer events will be turned off in css
+    firstCard.classList.add('matched');
+    secondCard.classList.add('matched');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
     score++;
