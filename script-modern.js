@@ -108,19 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     secondCard = this;
-    moveCounter++;
-    moveCounterDisplay.textContent = moveCounter;
     
+    // Check for match only after selecting the second card
     checkForMatch();
   }
 
   // Check if the flipped cards match
   function checkForMatch() {
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
-    isMatch ? disableCards() : unflipCards();
+    
+    if (isMatch) {
+      disableCards();
+    } else {
+      // Only increment move counter when cards DON'T match
+      moveCounter++;
+      moveCounterDisplay.textContent = moveCounter;
+      unflipCards();
+    }
     
     // Game over check after exactly 9 moves
-    if (moveCounter === 9) {
+    if (moveCounter >= 9) {
       setTimeout(() => handleGameOver(), 1000);
     }
   }
@@ -170,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof Swal !== 'undefined') {
       Swal.fire({
         title: 'Congratulations!',
-        text: `You won the game in ${moveCounter} moves!`,
+        text: `You won the game with ${score} pairs found and only ${moveCounter} mistakes!`,
         icon: 'success',
         confirmButtonText: 'Play Again',
         confirmButtonColor: '#3e64ff'
@@ -181,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } else {
       // Fallback if SweetAlert is not loaded
-      alert(`Congratulations! You won the game in ${moveCounter} moves!`);
+      alert(`Congratulations! You won the game with ${score} pairs found and only ${moveCounter} mistakes!`);
       resetGame();
     }
   }
@@ -215,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeof Swal !== 'undefined') {
         Swal.fire({
           title: 'Game Over',
-          text: `You found ${matchedCards.length / 2} out of ${totalPairs} pairs. Try again?`,
+          text: `You found ${matchedCards.length / 2} out of ${totalPairs} pairs with ${moveCounter} mistakes. Try again?`,
           icon: 'error',
           confirmButtonText: 'Play Again',
           confirmButtonColor: '#3e64ff'
@@ -226,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       } else {
         // Fallback if SweetAlert is not loaded
-        alert(`Game Over! You found ${matchedCards.length / 2} out of ${totalPairs} pairs.`);
+        alert(`Game Over! You found ${matchedCards.length / 2} out of ${totalPairs} pairs with ${moveCounter} mistakes.`);
         resetGame();
       }
     }
